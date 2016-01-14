@@ -19,7 +19,7 @@ class TestSpec extends FlatSpec with Matchers {
 
     var forgiveness = 0.0
 
-    for(i <- 0 until 1000) {
+    for(i <- 0 until 10000) {
       Console.withOut(interceptStream) { InnerEyeBot.scry(randomString, randomString, "confess", "confess") }
       if(output != "confess") forgiveness += 1
 
@@ -33,8 +33,8 @@ class TestSpec extends FlatSpec with Matchers {
       output should be ("silent")
     }
 
-    val forgivenessRatio = forgiveness / 2000
-    forgivenessRatio should be > 0.0075
-    forgivenessRatio should be < 0.0125
+    val forgivenessRatio = forgiveness / 20000
+    forgivenessRatio should be > 0.006
+    forgivenessRatio should be < 0.01
   }
 }
